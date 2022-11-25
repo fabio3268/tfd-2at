@@ -1,5 +1,7 @@
 <?php
 
+echo "Olá, " . $_POST["name"];
+
 $host = "localhost";
 $user = "root";
 $password = "";
@@ -16,18 +18,9 @@ $conn = new PDO(
     $options
 );
 
-$query = "INSERT INTO users 
-          VALUES (NULL, 'Carlos da Silva','carlos@ifsul.edu.br','12345678','C');";
+$name = $_POST["name"];
+$email = $_POST["email"];
+$password = $_POST["password"];
+
+$query = "INSERT INTO users VALUES (NULL, '$name', '$email','$password','C')";
 $stmt = $conn->query($query);
-
-/*
-$query = "SELECT * FROM users";
-$stmt = $conn->query($query);
-
-var_dump($stmt);
-
-while ($row = $stmt->fetch()){
-    var_dump($row, $row->name, $row->email);
-}
-*/
-
